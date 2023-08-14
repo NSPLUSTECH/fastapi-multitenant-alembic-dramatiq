@@ -17,3 +17,4 @@ python-jose[cryptography]>=3.3.0
 requests>=2.31.0
 sqlalchemy>=2.0.18
 schedule>=1.2.0
+pytest

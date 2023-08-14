@@ -1,8 +1,7 @@
 import os
 from datetime import datetime
 import sqlalchemy as sa
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy.orm import sessionmaker, Session, declarative_base
 from dotenv import load_dotenv
 import os
 from app.utils.constants import INVALID_SCHEMA, MASTER_SCHEMA
