@@ -1,16 +1,9 @@
-from app.models.auth_models import LoginResponse
 from .test_base import TestBase
 
 
 class TestLogin(TestBase):
     def test_superadmin_logsin_successfully(self):
-        login_result = self.client.post('/login', content=self.superadmin_user_credentials.model_dump_json())
-        assert login_result.status_code == 200
-        response = LoginResponse(**login_result.json())
-        assert response.name == self.superadmin_user_credentials.userName.split('@')[0]
-        assert response.role == 'SuperAdmin'
-        assert response.id == 1
-        assert response.contact == '0987654321'
+        self.login_as_super_admin()
 
     def test_invalid_user_cant_login(self):
         login_result = self.client.post('/login', content=self.invalid_user_credentials.model_dump_json())
