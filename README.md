@@ -1,14 +1,63 @@
-# Introduction 
+# Multi-Tenant Application with Separate Databases for Each Tenant
 
-# Getting Started
-[ ] copy paste the .env.sample file to .env file and update the variables as per your project.
-[ ] update the docker-compose.prod.yml for production release, add volumes of required.
-[ ] run docker-compose.prod.yml using docker compose command or similar for checking project is ready for production.
-[ ] while doing the development run the docker-compose,yml which runs postgres and rabitmq only.
-[ ] if you want to add new entity, then create entity in app/entity folder and then import it in __init__.py, then run `alembic revision --autogenerate -m "Added account table"` for generating the create or update table script automatically.
-[ ] check and verify auto generated tables scripts in migration folder. if required modify the generated script.
-[ ] to generate the required tables run `alembic upgrade head` before starting the application in development.
-[ ] you can use the vscode debugger for running the debugging the project while development.
-[ ] add your background task to app/background tasks folder and import it in last line of the app/dramatiq file.
-[ ] send that method just in example bg url from the routes
-[ ] add any new route to routes folder and don't forget to import it in route entries section
+This repository provides a starter template for implementing a multi-tenant application with separate databases for each tenant.
+
+## Getting Started
+
+To set up the project, follow these steps:
+
+1. **Configure Environment Variables**
+   - Copy the `.env.sample` file to `.env`:
+     ```sh
+     cp .env.sample .env
+     ```
+   - Update the variables in the `.env` file according to your project requirements.
+
+2. **Update Docker Configuration for Production**
+   - Modify `docker-compose.prod.yml` for production release.
+   - Add required volumes if necessary.
+
+3. **Run Docker for Production**
+   - Run the production Docker Compose file to check if the project is ready for production:
+     ```sh
+     docker-compose -f docker-compose.prod.yml up
+     ```
+
+4. **Run Docker for Development**
+   - During development, use `docker-compose.yml` which runs PostgreSQL and RabbitMQ only:
+     ```sh
+     docker-compose up
+     ```
+
+5. **Add New Entity**
+   - Create a new entity in the `app/entity` folder.
+   - Import the new entity in `__init__.py`.
+   - Generate the create or update table script automatically:
+     ```sh
+     alembic revision --autogenerate -m "Added account table"
+     ```
+
+6. **Verify and Modify Generated Scripts**
+   - Check and verify the auto-generated table scripts in the `migration` folder.
+   - Modify the generated script if required.
+
+7. **Generate Required Tables**
+   - Run the following command to generate the required tables before starting the application in development:
+     ```sh
+     alembic upgrade head
+     ```
+
+8. **Use VSCode Debugger**
+   - You can use the VSCode debugger to run and debug the project during development.
+
+9. **Add Background Tasks**
+   - Add your background task to the `app/background_tasks` folder.
+   - Import the background task in the last line of `app/dramatiq.py`.
+
+10. **Send Background Task Method**
+    - Use the background task method in the example background URL from the routes.
+
+11. **Add New Routes**
+    - Add any new route to the `routes` folder.
+    - Import the new route in the route entries section.
+
