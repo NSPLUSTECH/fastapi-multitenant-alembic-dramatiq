@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi import status
 from app.models.auth_models import LoginRequest, LoginResponse
@@ -33,7 +33,7 @@ async def login(
             "name": user.name,
             "contact": user.contact,
             "userid": user.id,
-            "exp": datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES),
+            "exp": datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES),
         }
         try:
             token = jwt.encode(claims, SECRET_KEY, algorithm=ALGORITHM)
